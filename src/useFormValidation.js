@@ -9,24 +9,16 @@ function useFormValidation(initialState, validate) {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
       if (noErrors) {
-        console.log(
-          'registered with email:',
-          values.email,
-          'and password:',
-          values.password,
-        );
+        console.log('registered:', {values});
         setSubmitting(false);
       } else {
         setSubmitting(false);
       }
     }
-  }, [errors, isSubmitting, values.email, values.password]);
+  }, [errors, isSubmitting, values]);
 
   function handleChange(key, item) {
     setValues({...values, [key]: item});
-    // const validationErrors = validate(values);
-    // setErrors(validationErrors);
-    // console.log({values});
   }
 
   function handleBlur() {
@@ -35,7 +27,7 @@ function useFormValidation(initialState, validate) {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    //event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
     setSubmitting(true);

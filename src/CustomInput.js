@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
+import R from 'ramda';
 
 export const CustomInput = ({
   name,
@@ -7,7 +8,6 @@ export const CustomInput = ({
   values,
   handleChange,
   handleBlur,
-  onPressOut,
   placeholder,
 }) => {
   return (
@@ -21,7 +21,7 @@ export const CustomInput = ({
         value={values[name]}
         placeholder={placeholder}
       />
-      <Text style={styles.error}>{errors[name] ? errors[name] : ' '}</Text>
+      <Text style={styles.error}>{R.pathOr(' ', [name], errors)}</Text>
     </View>
   );
 };
