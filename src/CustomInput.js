@@ -8,6 +8,8 @@ export const CustomInput = ({
   values,
   handleChange,
   handleBlur,
+  handleFocus,
+  handleOnChange,
   placeholder,
 }) => {
   return (
@@ -17,7 +19,9 @@ export const CustomInput = ({
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={e => handleChange([name], e)}
+        onChange={handleOnChange}
         onBlur={handleBlur}
+        onFocus={handleFocus}
         value={values[name]}
         placeholder={placeholder}
       />

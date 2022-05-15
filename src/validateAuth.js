@@ -1,5 +1,6 @@
 export default function validateAuth(values) {
   let errors = {};
+
   // First name
   if (!values.firstName) {
     errors.firstName = 'Required first name';
@@ -13,7 +14,7 @@ export default function validateAuth(values) {
     errors.lastName = 'Last name must be at least 2 characters';
   }
   // Phone Errors
-  const regPhone = /^\+7\d{10}$/;
+  const regPhone = /^\+7\d{10}$/i;
   if (!values.phone) {
     errors.phone = 'Required Phone';
   } else if (!regPhone.test(String(values.phone))) {
@@ -36,13 +37,15 @@ export default function validateAuth(values) {
   // .{8,}             # anything, at least eight places though
   // $                 # end-of-string
   const regPassword =
-    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!*()-])(?=\S+$).{8,}$/;
+    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!*()-])(?=\S+$).{8,}$/i;
+
   if (!values.password) {
     errors.password = 'Required Password';
   } else if (values.password.length < 8) {
     errors.password = 'Password at least 8 places though';
-  } else if (!regPassword.test(String(values.password))) {
+  } else if (!regPassword.test(values.password)) {
     errors.password = 'Invalid password';
   }
+
   return errors;
 }

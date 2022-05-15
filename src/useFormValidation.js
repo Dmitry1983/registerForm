@@ -26,6 +26,15 @@ function useFormValidation(initialState, validate) {
     setErrors(validationErrors);
   }
 
+  function handleFocus() {
+    const validationErrors = validate(values);
+    setErrors(validationErrors);
+  }
+  function handleOnChange() {
+    const validationErrors = validate(values);
+    setErrors(validationErrors);
+  }
+
   function handleSubmit(event) {
     //event.preventDefault();
     const validationErrors = validate(values);
@@ -36,7 +45,9 @@ function useFormValidation(initialState, validate) {
   return {
     handleSubmit,
     handleChange,
+    handleOnChange,
     handleBlur,
+    handleFocus,
     values,
     errors,
     isSubmitting,

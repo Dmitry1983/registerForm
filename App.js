@@ -39,8 +39,15 @@ const INITIAL_STATE = {
 };
 
 function App() {
-  const {handleSubmit, handleChange, handleBlur, values, errors, isSubmitting} =
-    useFormValidation(INITIAL_STATE, validateAuth);
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    handleOnChange,
+    values,
+    errors,
+    isSubmitting,
+  } = useFormValidation(INITIAL_STATE, validateAuth);
   isSubmitting && console.log({isSubmitting});
   return (
     <View style={styles.container}>
@@ -50,6 +57,7 @@ function App() {
         values={values}
         handleChange={handleChange}
         handleBlur={handleBlur}
+        handleOnChange={handleOnChange}
         placeholder="Your first name"
       />
       <CustomInput
@@ -58,6 +66,7 @@ function App() {
         values={values}
         handleChange={handleChange}
         handleBlur={handleBlur}
+        handleOnChange={handleOnChange}
         placeholder="Your last name"
       />
       <CustomInput
@@ -66,6 +75,7 @@ function App() {
         values={values}
         handleChange={handleChange}
         handleBlur={handleBlur}
+        handleOnChange={handleOnChange}
         placeholder="Your phone, like +70001234567"
       />
       <CustomInput
@@ -74,6 +84,7 @@ function App() {
         values={values}
         handleChange={handleChange}
         handleBlur={handleBlur}
+        handleOnChange={handleOnChange}
         placeholder="Your email address"
       />
       <CustomInput
@@ -82,6 +93,7 @@ function App() {
         values={values}
         handleChange={handleChange}
         handleBlur={handleBlur}
+        handleOnChange={handleOnChange}
         placeholder="Choose a safe password"
       />
 
